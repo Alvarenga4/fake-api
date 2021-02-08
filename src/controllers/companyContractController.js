@@ -1,6 +1,10 @@
 module.exports = {
   async show(req, res) {
     try {
+      const { providerslug, contractcode } = req.headers;
+
+      if (!providerslug || !contractcode) return res.status(404).json({ error: 'providerSlug or contractCode is empty' });
+
       const company = {
         "companyId": 1,
         "compayName": "Empresa do seu zé",
